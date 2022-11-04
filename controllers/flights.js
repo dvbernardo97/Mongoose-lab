@@ -8,23 +8,29 @@ module.exports = {
 }
 
 function newflights(req, res) {
-    console.log('this is new flight')
     res.render("flights/new");
 }
-
 function create(req, res) {
-    console.log('this is create')
+    for (let key in req.body) {
+        if (req.body[key] === "") delete req.body[key];
+    }
     const flight = new Flight(req.body);
     flight.save(function (err) {
-        if (err) return res.render('/flights/new');
+        if (err){
+            console.log(err)
+             return res.redirect('/flights/new');
+        }
         console.log(flight);
         res.redirect('/flights');
     });
 }
+
 function index(req, res) {
-    console.log('this is index')
     Flight.find({}, function (err, flights) {
-        if (err) { return res.redirect('/'); }
+        if (err) {
+            console.log(err)
+            res.redirect('/');
+        }
         res.render('flights/index', { flights });
     })
 }
