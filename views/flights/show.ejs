@@ -1,0 +1,29 @@
+<h1>Flight Details</h1>
+<button><a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a></button>
+<br><br>
+<h2>Destination/Date</h2>
+
+<form id="add-destination-form" method="POST" action="/flights/<%= flight._id %>/destinations">
+    <label>Arrival Airport:</label>
+    <select name="airport">
+        <option value="AUS">AUS</option>
+        <option value="DFW">DFW</option>
+        <option value="DEN">DEN</option>
+        <option value="LAX">LAX</option>
+        <option value="SAN">SAN</option>
+    </select>
+    <input type="datetime-local" name="arrival" value="<%= new Date().toISOString().slice(0, 16) %>">
+    <input type="submit" value="Add Flight Details">
+</form>
+<br>
+<% if (flight.destinations.length) { %>
+    <% flight.destinations.forEach(function(f) { %>
+        <div>Arrival Airport: <%= f.airport %>
+        </div>
+        <div>Arrival Date/Time: <%= f.arrival %>
+        </div>
+        <br>
+        <% }); %>
+            <% } else { %>
+                <h5>No Destination Added Yet</h5>
+                <% } %>

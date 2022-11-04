@@ -5,6 +5,7 @@ module.exports = {
     new: newflights,
     create,
     index,
+    show
 }
 
 function newflights(req, res) {
@@ -16,9 +17,9 @@ function create(req, res) {
     }
     const flight = new Flight(req.body);
     flight.save(function (err) {
-        if (err){
+        if (err) {
             console.log(err)
-             return res.redirect('/flights/new');
+            return res.redirect('/flights/new');
         }
         console.log(flight);
         res.redirect('/flights');
@@ -32,5 +33,11 @@ function index(req, res) {
             res.redirect('/');
         }
         res.render('flights/index', { flights });
+    })
+}
+
+function show(req, res) {
+    Flight.findById(req.params.id, function (err, flight) {
+        res.render('flights/show', { flight });
     })
 }

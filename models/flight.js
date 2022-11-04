@@ -33,8 +33,14 @@ const flightSchema = new Schema({
         default: new Date().setFullYear(new Date().getFullYear() + 1)
     },
 
-    destination: [destinationSchema]
+    destinations: [destinationSchema]
 });
+
+const ticketSchema = new Schema({
+    seat : {type: String,
+    match:/[A-F][1-9]\d?/}
+
+})
 
 
 module.exports = mongoose.model('flights', flightSchema)
