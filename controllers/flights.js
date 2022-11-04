@@ -1,5 +1,5 @@
 // controllers/flights.js
-const flight = require("../models/flight")
+const Flight = require("../models/flight")
 
 module.exports = {
     new: newflights,
@@ -8,10 +8,12 @@ module.exports = {
 }
 
 function newflights(req, res) {
+    console.log('this is new flight')
     res.render("flights/new");
 }
 
 function create(req, res) {
+    console.log('this is create')
     const flight = new Flight(req.body);
     flight.save(function (err) {
         if (err) return res.render('/flights/new');
@@ -20,6 +22,7 @@ function create(req, res) {
     });
 }
 function index(req, res) {
+    console.log('this is index')
     Flight.find({}, function (err, flights) {
         if (err) { return res.redirect('/'); }
         res.render('flights/index', { flights });
