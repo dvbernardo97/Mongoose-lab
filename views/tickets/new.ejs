@@ -1,19 +1,17 @@
-<%- include('../partials/head') %>
-<%- include('../partials/navbar') %>
 <h2>Tickets: </h2>
 
 <form action="/flights/<%= flight._id %>/tickets" method="POST" autocomplete="off">
-  <p>Please enter a seat between A1 - F99.</p>
-  <label>Seat:</label>
-  <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="eg. A4">
-  <br><br>
+    <p>Please enter a seat between A1 - F99.</p>
+    <label>Seat:</label>
+    <input name="seat" required pattern="[A-F][1-9]\d?" placeholder="eg. A4">
+    <br><br>
 
 
-  <input name="flight" class="hide" value="<%= flight._id %>">
+    <input name="flight" class="hide" value="<%= flight._id %>">
 
 
-  <label>Price:</label>
-  <input type="number" min="0" name="price">
-  <br><br>
-  <input type="submit" value="New Ticket">
-  </form>
+    <label>Price:</label>
+    <input type="number" min="0" name="price">
+    <br><br>
+    <input type="submit" value="New Ticket">
+</form>
