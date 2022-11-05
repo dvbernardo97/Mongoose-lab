@@ -1,3 +1,44 @@
+<table>
+    <thead>
+        <tr>
+            <th>Airline</th>
+            <th>Airport</th>
+            <th>Flight No.</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>
+                <%= flight.airline %>
+            </td>
+            <td>
+                <%= flight.airport %>
+            </td>
+            <td>
+                <%= flight.flightNo %>
+            </td>
+            <td>
+                <%= flight.depart %>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<table>
+    <% tickets.forEach(t=> { %>
+        <tr>
+            <td>
+                <%= t.seat %>
+            </td>
+            <td>
+                <%= t.price %>
+            </td>
+        </tr>
+        <% }) %>
+            </tbody>
+
+</table>
+
 <button><a href="/flights/<%= flight._id %>/tickets/new">New Ticket</a></button>
 <br><br>
 <h2>Destination/Date</h2>

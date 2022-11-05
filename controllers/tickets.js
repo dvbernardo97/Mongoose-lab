@@ -9,6 +9,7 @@ module.exports = {
 function create(req, res) {
     Flight.findById(req.params.id, function (err, flight) {
         const ticket = new Ticket(req.body);
+        console.log(req.body)
         ticket.save(function (err) {
             if (err) return res.redirect(`/flights/${flight._id}/tickets/new`);
             res.redirect(`/flights/${flight._id}`)
